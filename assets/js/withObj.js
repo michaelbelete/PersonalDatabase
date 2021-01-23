@@ -5,10 +5,10 @@ let personProfile = {
     weight: '',
     height: '',
     familyMembers: new Array(),
-    ageCalc: function(){
+    ageCalc: function () {
         return new Date().getFullYear() - this.birthYear;
     },
-    checkVote: function(){
+    checkVote: function () {
         return this.age >= 18 ? true : false;
     },
     calcBmi: function () {
@@ -23,7 +23,8 @@ let personProfile = {
             return "your BMI is " + this.bmi + " and you are Obese"
         }
     },
-    bmi: 
+    bmi: ''
+}
 
 // Receive the values from input and assign to object properties
 personProfile.firstName = prompt("Enter Your First Name");
@@ -43,22 +44,20 @@ for (let i = 0; i < parseInt(numberOfFamily); i++) {
 // call age and check vote fun
 personProfile.ageCalc();
 personProfile.checkVote();
-personProfile.calcBmi()
-console.log(personProfile)
-// Adding Self Invoking Function Expression 
-// (function() {
-//     console.log("**************************************************************")
-//     console.log("Here is your Profile ")
-//     console.log("Full Name: " + personProfile.firstName + " " + personProfile.lastName);
-//     console.log("Profession : " + personProfile.job);
-//     console.log("Age : " + personProfile.age + " " + "years old");
-//     console.log("Is Eligible to Vote : " + personProfile.isEligibleToVote);
-//     console.log("Family Members ");
-//     //Displaying the family member with foreach
-//     personProfile.familyMembers.forEach(function(member, index) {
-//         console.log("Family Member  " + (index + 1) + " : " + member);
-//     });
-//     // call bmi calculator 
-//     console.log(personalProfile['bmi'])
-//     console.log("**************************************************************")
-// })
+    // Adding Self Invoking Function Expression
+    (function () {
+        console.log("**************************************************************")
+        console.log("Here is your Profile ")
+        console.log("Full Name: " + personProfile.firstName + " " + personProfile.lastName);
+        console.log("Profession : " + personProfile.job);
+        console.log("Age : " + personProfile.age + " " + "years old");
+        console.log("Is Eligible to Vote : " + personProfile.isEligibleToVote);
+        console.log("Family Members ");
+        //Displaying the family member with foreach
+        personProfile.familyMembers.forEach(function (member, index) {
+            console.log("Family Member  " + (index + 1) + " : " + member);
+        });
+        // call bmi calculator 
+        console.log(personalProfile['bmi'])
+        console.log("**************************************************************")
+    })()
