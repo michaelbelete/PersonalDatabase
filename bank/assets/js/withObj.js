@@ -60,4 +60,4 @@ personProfile.checkVote();
         // call bmi calculator 
         console.log(personalProfile['bmi'])
         console.log("**************************************************************")
-    })()
+    }())

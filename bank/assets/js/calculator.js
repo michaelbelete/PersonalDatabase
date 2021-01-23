@@ -27,3 +27,7 @@ const div = function(a,b) {
         return a/b
     }
 }
+
+(function () {
+    choice = parseInt(prompt("Choose operation: 1 for addiation"))
+}());
