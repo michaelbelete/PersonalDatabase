@@ -1,4 +1,4 @@
-const add = function(numArray) {
+function add(numArray) {
     let result = 0
     numArray.forEach(num => {
         result += num
@@ -7,7 +7,7 @@ const add = function(numArray) {
     return result
 }
 
-const mult = function(numArray) {
+function mult(numArray) {
     let result = 1
     numArray.forEach(num => {
         result = result * num 
@@ -16,11 +16,11 @@ const mult = function(numArray) {
 }
 
 
-const sub = function(a,b) {
+function sub(a,b) {
     return a - b
 } 
 
-const div = function(a,b) {
+function div(a,b) {
     if(b == 0){
         return 'Oops, can\'t divide by zero'
     }else{
@@ -38,6 +38,11 @@ const div = function(a,b) {
         for(let i = 0; i < numberOfInputs; i++) {
             numArray[i] = parseInt(prompt(`please enter ${i+1} number`))
         }
+        console.log(add(numArray))
+    }else if(choice === 2){
+        let num1 = parseInt(prompt("please enter the first number: "))
+        let num2 = parseInt(prompt("please enter the second number: "))
+
         console.log(sub(num1, num2))
     }else if(choice === 3){
         let numArray = new Array()
@@ -47,7 +52,6 @@ const div = function(a,b) {
             numArray[i] = parseInt(prompt(`please enter ${i+1} number`))
         }
         console.log(mult(numArray))
-
     }else if(choice === 4){
         let num1 = parseInt(prompt("please enter the first number: "))
         let num2 = parseInt(prompt("please enter the second number: "))
