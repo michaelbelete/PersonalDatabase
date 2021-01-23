@@ -32,11 +32,11 @@ for(let i = 0; i < numOfFamilyMembers; i++){
 }
 
 let tempAge;
-let isEligiableToVote;
+let isEligibleToVote;
 
 tempAge = parseInt(age)
 
-isEligiableToVote = tempAge >= 18 ? true : false;
+isEligibleToVote = tempAge >= 18 ? true : false;
 
 // display result
 (function(){
@@ -44,7 +44,7 @@ isEligiableToVote = tempAge >= 18 ? true : false;
     console.log("Full Name: " + firstName + " "+lastName);
     console.log("Profession : " + job);
     console.log("Age : " + age + " " + "years old");
-    console.log("Eligable to vote : " + isEligiableToVote )
+    console.log("Eligable to vote : " + isEligibleToVote )
     familyMembers.forEach(function(member){
         console.log(`your family members ${member}`)
     })
