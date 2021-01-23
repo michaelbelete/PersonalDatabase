@@ -1,18 +1,37 @@
+//exercise - calculating BMI
+const calcBmi = function (weight, height) {
+    const bmi = weight / (Math.pow(height, 2)).toFixed(1)
+    
+    if (bmi < 18.5) {
+        return "your BMI is " + bmi + " and you are underweight"
+    } else if (bmi > 18.5 || bmi < 24.9) {
+        return "your BMI is " + bmi + " and you are normal or healthy weight"
+    } else if (bmi > 25.0 || bmi < 29.9) {
+        return "your BMI is " + bmi + " and you are Over Weight"
+    } else {
+        return "your BMI is " + bmi + " and you are Obese"
+    }
+}
+
+let weight = parseFloat(prompt("Your Weight is(kg): "))
+let height = parseFloat(prompt("Your height is(m): "))
+
+console.log(calcBmi(weight, height))
 // working with function
 
-var birthYear;     
-//Some changes
-birthYear = prompt("Enter Your Birth Year");
- 
-let tempAge = ageCalc(birthYear);
+// var birthYear;     
+// //Some changes
+// birthYear = prompt("Enter Your Birth Year");
 
-console.log("Age : " + tempAge + " " + "years old");
+// let tempAge = ageCalc(birthYear);
 
-//age calculator function
-function ageCalc(birthYear)
-{
-    return new Date().getFullYear() - birthYear;
-}
+// console.log("Age : " + tempAge + " " + "years old");
+
+// //age calculator function
+// function ageCalc(birthYear)
+// {
+//     return new Date().getFullYear() - birthYear;
+// }
 
 // //working with loops
 
