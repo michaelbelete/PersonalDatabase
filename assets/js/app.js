@@ -1,18 +1,34 @@
-//working with loops
+// working with function
 
-let familyMembers = new Array()
+var birthYear;     
+//Some changes
+birthYear = prompt("Enter Your Birth Year");
+ 
+let tempAge = ageCalc(birthYear);
 
-let numOfFamilyMembers = parseInt(prompt('enter number of family memebers'));
+console.log("Age : " + tempAge + " " + "years old");
 
-for(let i = 0; i < numOfFamilyMembers; i++){
-    familyMembers[i] = prompt(`your family member number ${i+1}`)
+//age calculator function
+function ageCalc(birthYear)
+{
+    return new Date().getFullYear() - birthYear;
 }
 
-console.log(familyMembers)
+// //working with loops
 
-familyMembers.forEach(function(member){
-    console.log(`your family members ${member}`)
-})
+// let familyMembers = new Array()
+
+// let numOfFamilyMembers = parseInt(prompt('enter number of family memebers'));
+
+// for(let i = 0; i < numOfFamilyMembers; i++){
+//     familyMembers[i] = prompt(`your family member number ${i+1}`)
+// }
+
+// console.log(familyMembers)
+
+// familyMembers.forEach(function(member){
+//     console.log(`your family members ${member}`)
+// })
 
 // // working with input and output
 // var firstName, lastName, age,  job;
