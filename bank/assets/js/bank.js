@@ -58,7 +58,7 @@ function withdraw(accountNumber, money) {
             let currentBalance = bankAccounts.accounts[accountIndex].balance
             let result = currentBalance - money
             if (result > 25) {
-                bankAccounts.accounts[accountIndex].balance -= money
+                bankAccounts.accounts[accountIndex].balance = currentBalance
                 return `${money} birr amount of money had been withdrawn from account number ${accountNumber} \n Current Balance: ${result}`
             } else {
                 return "you have insufficient amount of money to withdraw. please try again with another amount"
@@ -76,7 +76,19 @@ function balance(accountNumber) {
     }
 }
 function transfer(sender, receiver, amount) {
-    console.log("no way jose")
+    let selectedSenderAccountNumber = bankAccounts.accounts.filter(account => account.accountNumber == sender)
+    if (selectedSenderAccountNumber.length === 0) {
+        return "The sender account you selected doesn't exist"
+    } else {
+        let selectedReceiverAccountNumber = bankAccounts.accounts.filter(account => account.accountNumber == receiver)
+        if (selectedReceiverAccountNumber.length === 0) {
+            return "The receiver account you selected doesn't exist"
+        } else {
+            console.log(withdraw(sender, amount))
+            console.log(deposit(receiver, amount))
+            return `${amount} amount of money has been transferred from ${selectedSenderAccountNumber[0].fullName} Account Number ${sender} to  ${selectedReceiverAccountNumber[0].fullName} Account Number ${receiver}`
+        }
+    }
 }
 
 (function () {
@@ -125,6 +137,19 @@ function transfer(sender, receiver, amount) {
                 console.log(result)
                 alert(result)
             }
+        } else if (choice == 5) {
+            let accountNumber = parseInt(prompt("Enter Account Number: "))
+            console.log("*********************************************")
+            console.log(`Your balance is ${balance(accountNumber)}`)
+            alert(`Your balance is ${balance(accountNumber)}`)
+        } else if (choice == 6) {
+            let sender = parseInt(prompt("Enter Sender Account Number: "))
+            let receiver = parseInt(prompt("Enter Receiver Account Number: "))
+            let money = parseInt(prompt("Enter amount of money to transfer: "))
+            
+            let result = transfer(sender, receiver, money)
+            console.log(result)
+            alert(result)
         } else {
             console.log("Exiting")
             cont = false
