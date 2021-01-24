@@ -58,7 +58,7 @@ function withdraw(accountNumber, money) {
             let currentBalance = bankAccounts.accounts[accountIndex].balance
             let result = currentBalance - money
             if (result > 25) {
-                bankAccounts.accounts[accountIndex].balance = currentBalance
+                bankAccounts.accounts[accountIndex].balance = result
                 return `${money} birr amount of money had been withdrawn from account number ${accountNumber} \n Current Balance: ${result}`
             } else {
                 return "you have insufficient amount of money to withdraw. please try again with another amount"
@@ -84,9 +84,21 @@ function transfer(sender, receiver, amount) {
         if (selectedReceiverAccountNumber.length === 0) {
             return "The receiver account you selected doesn't exist"
         } else {
-            console.log(withdraw(sender, amount))
-            console.log(deposit(receiver, amount))
-            return `${amount} amount of money has been transferred from ${selectedSenderAccountNumber[0].fullName} Account Number ${sender} to  ${selectedReceiverAccountNumber[0].fullName} Account Number ${receiver}`
+            if (amount <= 0 || amount <= 25) {
+                return "please enter at least minimum of 25 birr to send"
+            } else {
+                let accountIndex = bankAccounts.accounts.findIndex(account => account.accountNumber == sender)
+                let currentBalance = bankAccounts.accounts[accountIndex].balance
+                let result = currentBalance - amount
+                console
+                if (result > 25) {
+                    console.log(withdraw(sender, amount))
+                    console.log(deposit(receiver, amount))
+                    return `${amount} amount of money has been transferred from ${selectedSenderAccountNumber[0].fullName} Account Number ${sender} to  ${selectedReceiverAccountNumber[0].fullName} Account Number ${receiver}`
+                } else {
+                    return "you have insufficient amount of money to transfer. please try again with another amount"
+                }
+            }
         }
     }
 }
@@ -94,7 +106,7 @@ function transfer(sender, receiver, amount) {
 (function () {
     cont = true
     while (cont) {
-        let choice = parseInt(prompt("Welcome to BMSys \n Choose what you want to do: \n 1) Add Account \n 2) See all accounts \n 3) deposit money \n 4) withdraw money \n 5) See balance \n 6) Transfer Money \n press any other key to quit"))
+        let choice = parseInt(prompt("Welcome to BMSys \n Choose what you want to do: \n 1) Add Account \n 2) See all accounts \n 3) Deposit money \n 4) Withdraw money \n 5) See balance \n 6) Transfer Money \n press any other key to quit"))
 
         if (choice === 1) {
             let accountData = {
@@ -146,7 +158,7 @@ function transfer(sender, receiver, amount) {
             let sender = parseInt(prompt("Enter Sender Account Number: "))
             let receiver = parseInt(prompt("Enter Receiver Account Number: "))
             let money = parseInt(prompt("Enter amount of money to transfer: "))
-            
+
             let result = transfer(sender, receiver, money)
             console.log(result)
             alert(result)
