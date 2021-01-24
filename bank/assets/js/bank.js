@@ -1,5 +1,16 @@
 const bankAccounts = {
-    accounts: [],
+    accounts: [
+        {
+            fullName: "Michael Belete",
+            balance: 100,
+            accountNumber: 12
+        },
+        {
+            fullName: "Teddy Belete",
+            balance: 300,
+            accountNumber: 19
+        }
+    ],
 }
 
 function generateAccount(min, max) {
@@ -28,7 +39,9 @@ function deposit(accountNumber, money) {
         if (money <= 0 || money <= 25) {
             return "please enter at least minimum of 25 birr"
         } else {
-            selectedAccountNumber.accounts.balance += money
+            let accountIndex = bankAccounts.accounts.findIndex(account => account.accountNumber == accountNumber)
+            bankAccounts.accounts[accountIndex].balance += money
+            return `${ money } amount of money had been deposited to account number ${accountNumber}`
         }
     }
 }
@@ -65,7 +78,7 @@ function transfer(sender, receiver, amount) {
 (function () {
     cont = true
     while (cont) {
-        let choice = parseInt(prompt("Welcome to BMsys \n Choose what you want to do: \n 1) add Account \n 2) See all accounts \n 3) deposit money \n 4) withdraw money \n 5) See balance \n 6) Transfer Money \n press any other key to quit"))
+        let choice = parseInt(prompt("Welcome to BMSys \n Choose what you want to do: \n 1) Add Account \n 2) See all accounts \n 3) deposit money \n 4) withdraw money \n 5) See balance \n 6) Transfer Money \n press any other key to quit"))
 
         if (choice === 1) {
             let accountData = {
@@ -84,6 +97,18 @@ function transfer(sender, receiver, amount) {
             console.table(allAccounts())
             console.log("**************************************")
 
+        } else if (choice === 3) {
+            let accountNumber = parseInt(prompt("Enter Account Number: "))
+            let selectedAccountNumber = bankAccounts.accounts.filter(account => account.accountNumber == accountNumber)
+            if (selectedAccountNumber.length === 0) {
+                alert("the account you selected doesn't exist")
+                console.log("the account you selected doesn't exist")
+            } else {
+                let amount = parseFloat(prompt(` Selected Account: ${ selectedAccountNumber[0].fullName } \n Account Number: ${ selectedAccountNumber[0].accountNumber } \n Enter the amount you want to deposit: `))
+                let result = deposit(accountNumber, amount)
+                console.log(result)
+                alert(result)
+            }
         } else {
             console.log("Exiting")
             cont = false
